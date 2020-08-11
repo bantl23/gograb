@@ -30,6 +30,12 @@ func main() {
 		}
 	}
 
+	_, err := os.Stat(gomod)
+	if os.IsNotExist(err) {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
 	contents, err := ioutil.ReadFile(gomod)
 	if err != nil {
 		fmt.Println(err)
